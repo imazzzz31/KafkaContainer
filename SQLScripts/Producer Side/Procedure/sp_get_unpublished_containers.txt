@@ -1,0 +1,6 @@
+DELIMITER $$
+CREATE PROCEDURE `sp_get_unpublished_containers`()
+BEGIN
+    SELECT * FROM Container_Info WHERE published_to_kafka = 0;
+END$$
+DELIMITER ;

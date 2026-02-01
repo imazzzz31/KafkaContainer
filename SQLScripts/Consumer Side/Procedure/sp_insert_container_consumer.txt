@@ -1,0 +1,38 @@
+DELIMITER $$
+CREATE PROCEDURE `sp_insert_container_consumer`(
+    IN p_container_number VARCHAR(25),
+    IN p_container_type VARCHAR(15),
+    IN p_container_status VARCHAR(30),
+    IN p_status_date_time DATETIME,
+    IN p_current_location_code VARCHAR(10),
+    IN p_vessel_name VARCHAR(100),
+    IN p_voyage_number VARCHAR(50),
+    IN p_port_of_loading VARCHAR(10),
+    IN p_port_of_discharge VARCHAR(10)
+)
+BEGIN
+    INSERT INTO Container_Info_Consumer (
+        container_number,
+        container_type,
+        container_status,
+        status_date_time,
+        current_location_code,
+        vessel_name,
+        voyage_number,
+        port_of_loading,
+        port_of_discharge,
+        consumed_at
+    ) VALUES (
+        p_container_number,
+        p_container_type,
+        p_container_status,
+        p_status_date_time,
+        p_current_location_code,
+        p_vessel_name,
+        p_voyage_number,
+        p_port_of_loading,
+        p_port_of_discharge,
+        NOW()
+    );
+END$$
+DELIMITER ;

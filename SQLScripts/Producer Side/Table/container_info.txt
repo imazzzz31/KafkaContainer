@@ -1,0 +1,19 @@
+CREATE TABLE `container_info` (
+  `container_id` int NOT NULL AUTO_INCREMENT,
+  `container_number` varchar(25) NOT NULL,
+  `container_type` varchar(15) NOT NULL,
+  `container_status` varchar(30) NOT NULL,
+  `status_date_time` datetime NOT NULL,
+  `current_location_code` varchar(10) NOT NULL,
+  `vessel_name` varchar(100) NOT NULL,
+  `voyage_number` varchar(50) NOT NULL,
+  `port_of_loading` varchar(10) NOT NULL,
+  `port_of_discharge` varchar(10) NOT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `published_to_kafka` tinyint DEFAULT '0',
+  `published_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`container_id`),
+  UNIQUE KEY `uq_container_number` (`container_number`),
+  KEY `container_info_ak1` (`container_number`),
+  KEY `Container_Info_AK2` (`published_to_kafka`)
+) 
